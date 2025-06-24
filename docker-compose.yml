@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  yolo-v5-flask-app:
+    build:
+      context: ./yolo-v5-flask-app
+      dockerfile: Dockerfile
+    container_name: yolo-v5-flask-app
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+
+  depth-anything-flask-app:
+    build:
+      context: ./depth-anything-flask-app
+      dockerfile: Dockerfile
+    container_name: depth-anything-flask-app
+    ports:
+      - "5050:5050"
+    restart: unless-stopped
+
+  object-detection-react-app:
+    build:
+      context: ./object-detection-react-app
+      dockerfile: Dockerfile
+    container_name: object-detection-react-app
+    ports:
+      - "3000:80"
+    restart: unless-stopped
+
+# Add volumes or environment variables as needed for your setup.

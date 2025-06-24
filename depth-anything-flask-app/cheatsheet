@@ -1,0 +1,4 @@
+python run.py \
+  --encoder vits \
+  --img-path images --outdir output \
+  [--input-size <size>] [--pred-only] [--grayscale]

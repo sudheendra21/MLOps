@@ -1,0 +1,10 @@
+gradio_imageslider
+gradio==4.29.0
+matplotlib
+opencv-python
+torch
+torchvision
+Flask>=3.0.0
+docarray==0.21.0
+opencv-python>=4.1.1
+flask-cors

@@ -1,0 +1,88 @@
+curl -X POST http://127.0.0.1:5000/path_to_docarray -H "Content-Type: application/json" -d '{"image_path": "data/images/bus.jpg"}'
+
+
+
+curl -X POST http://127.0.0.1:5000/detect -H "Content-Type: application/json" -d '{"docarray_json":[]}'
+
+
+## to run the api
+python view_output.py
+
+
+
+
+# import requests
+# import json
+# import base64
+# from pathlib import Path
+
+# def quick_test():
+#     """Quick test of the simplified API"""
+    
+#     base_url = "http://127.0.0.1:5000"
+#     image_path = "data/images/bus.jpg"
+    
+#     print("🧪 Quick API Test")
+#     print("="*30)
+    
+#     # Step 1: Check if API is running
+#     try:
+#         health = requests.get(f"{base_url}/health")
+#         if health.status_code == 200:
+#             print("✅ API is running")
+#         else:
+#             print("❌ API not responding")
+#             return
+#     except:
+#         print("❌ Cannot connect to API. Make sure it's running on port 5000")
+#         return
+    
+#     # Step 2: Convert image to DocArray JSON
+#     print("📁 Converting image to DocArray...")
+    
+#     try:
+#         response = requests.post(
+#             f"{base_url}/path_to_docarray",
+#             json={"image_path": image_path}
+#         )
+        
+#         if response.status_code == 200:
+#             result = response.json()
+#             docarray_json = result['docarray_json']
+#             print(f"✅ DocArray created")
+#         else:
+#             print(f"❌ Failed to create DocArray: {response.status_code}")
+#             print(response.text)
+#             return
+#     except Exception as e:
+#         print(f"❌ Error: {e}")
+#         return
+    
+#     # Step 3: Run detection
+#     print("🔍 Running detection...")
+    
+#     try:
+#         response = requests.post(
+#             f"{base_url}/detect",
+#             json={"docarray_json": docarray_json}
+#         )
+        
+#         if response.status_code == 200:
+#             result = response.json()
+            
+#             print(f"✅ Detection successful!")
+#             print(f"   Objects found: {result['num_detections']}")
+            
+#             # Show detections
+#             for i, det in enumerate(result['detections'], 1):
+#                 bbox = det['bbox_xyxy']
+#                 print(f"   {i}. {det['class_name']}: {det['confidence']:.3f}")
+#                 print(f"      Box: [{bbox[0]:.0f}, {bbox[1]:.0f}, {bbox[2]:.0f}, {bbox[3]:.0f}]")
+#         else:
+#             print(f"❌ Detection failed: {response.status_code}")
+#             print(response.text)
+#     except Exception as e:
+#         print(f"❌ Error: {e}")
+
+# if __name__ == "__main__":
+#     quick_test()
