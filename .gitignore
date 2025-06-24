@@ -12,9 +12,11 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+.venv/
 
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
+checkpoints/
 
 # VS Code settings
 .vscode/
@@ -52,3 +54,157 @@ htmlcov/
 .tox/
 .nox/
 .cache/
+
+# Python egg files
+*.egg
+*.egg-info
+*.whl
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+downloads/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+.installed.cfg
+*.egg-info/
+MANIFEST
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# mypy static type checker
+.mypy_cache/
+.dmypy.json
+darglint.json
+
+# VS Code settings
+.vscode/
+
+# Rope project settings
+.ropeproject/
+
+# PyCharm project files
+.idea/
+
+# Spyder project settings
+.spyproject/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# IPython profile
+.profile_default/
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# poetry
+poetry.lock
+
+# pyproject
+pyproject.toml
+
+# coverage
+.coverage
+coverage.xml
+*.cover
+*.py,cover
+
+# pytest
+.cache
+nosetests.xml
+test-results/
+
+# sphinx
+docs/_build/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+
+# pytype
+.pytype/
+
+# pyre
+.pyre/
+
+# Cython debug symbols
+cython_debug/
+
+# VS Code settings
+.vscode/
+
+# Rope project settings
+.ropeproject/
+
+# PyCharm project files
+.idea/
+
+# Spyder project settings
+.spyproject/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# IPython profile
+.profile_default/
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# poetry
+poetry.lock
+
+# pyproject
+pyproject.toml
+
+# coverage
+.coverage
+coverage.xml
+*.cover
+*.py,cover
+
+# pytest
+.cache
+nosetests.xml
+test-results/
+
+# sphinx
+docs/_build/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+
+# pytype
+.pytype/
+
+# pyre
+.pyre/
+
+# Cython debug symbols
+cython_debug/
+
+*.pth
