@@ -6,10 +6,8 @@ phases:
       python: 3.11
       nodejs: 20
     commands:
-      # Install Docker if needed (for CodeBuild environments that don't have it)
       - nohup /usr/local/bin/dockerd-entrypoint.sh &
       - timeout 15 sh -c "until docker info; do echo .; sleep 1; done"
-      # Install Python and Node dependencies
       - pip install --upgrade pip
       - pip install -r yolo-v5-flask-app/requirements.txt
       - pip install -r depth-anything-flask-app/requirements.txt
@@ -18,7 +16,8 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
-      # Add ECR login command here if pushing images
+      - export WEBAPP_API_SERVICE_URL=Mlops-alb-2120823531.us-east-1.elb.amazonaws.com
+      - echo "WEBAPP_API_SERVICE_URL=$WEBAPP_API_SERVICE_URL"
 
   build:
     commands:
@@ -28,7 +27,6 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
-      # Add Docker push or deployment steps here if needed
 
 artifacts:
   files:
