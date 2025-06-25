@@ -16,17 +16,25 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
-      - export WEBAPP_API_SERVICE_URL=Mlops-alb-2120823531.us-east-1.elb.amazonaws.com
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 491085381993.dkr.ecr.us-east-1.amazonaws.com
+      - export WEBAPP_API_SERVICE_URL=http://Mlops-alb-2120823531.us-east-1.elb.amazonaws.com
       - echo "WEBAPP_API_SERVICE_URL=$WEBAPP_API_SERVICE_URL"
 
   build:
     commands:
       - echo Building Docker images...
       - docker compose build
+      - docker tag yolo-v5-flask-app:latest 491085381993.dkr.ecr.us-east-1.amazonaws.com/objectdetection/detect:latest
+      - docker tag depth-anything-flask-app:latest 491085381993.dkr.ecr.us-east-1.amazonaws.com/objectdetection/depth:latest
+      - docker tag object-detection-react-app:latest 491085381993.dkr.ecr.us-east-1.amazonaws.com/objectdetection/frontend:latest
 
   post_build:
     commands:
-      - echo Build completed on `date`
+      - echo Pushing Docker images to ECR...
+      - docker push 491085381993.dkr.ecr.us-east-1.amazonaws.com/objectdetection/detect:latest
+      - docker push 491085381993.dkr.ecr.us-east-1.amazonaws.com/objectdetection/depth:latest
+      - docker push 491085381993.dkr.ecr.us-east-1.amazonaws.com/objectdetection/frontend:latest
+      - echo Build and push completed on `date`
 
 artifacts:
   files:
