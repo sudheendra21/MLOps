@@ -193,7 +193,7 @@ def encode_image_to_base64(img_array):
     except Exception as e:
         raise Exception(f"Error encoding image: {e}")
 
-@app.route('/predict_depth', methods=['POST'])
+@app.route('/depth/predict_depth', methods=['POST'])
 def predict_depth():
     """Main endpoint for depth prediction with object midpoints"""
     try:

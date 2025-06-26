@@ -2,6 +2,7 @@ version: "3.8"
 
 services:
   yolo-v5-flask-app:
+    platform: linux/amd64
     build:
       context: ./yolo-v5-flask-app
       dockerfile: Dockerfile
@@ -11,6 +12,7 @@ services:
     restart: unless-stopped
 
   depth-anything-flask-app:
+    platform: linux/amd64
     build:
       context: ./depth-anything-flask-app
       dockerfile: Dockerfile
@@ -20,6 +22,7 @@ services:
     restart: unless-stopped
 
   object-detection-react-app:
+    platform: linux/amd64
     build:
       context: ./object-detection-react-app
       dockerfile: Dockerfile
@@ -28,4 +31,3 @@ services:
       - "3000:80"
     restart: unless-stopped
 
-# Add volumes or environment variables as needed for your setup.

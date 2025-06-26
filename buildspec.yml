@@ -23,7 +23,7 @@ phases:
   build:
     commands:
       - echo Building Docker images...
-      - docker compose build
+      - docker compose build --platform linux/amd64
       - docker tag yolo-v5-flask-app:latest 491085381993.dkr.ecr.us-east-1.amazonaws.com/objectdetection/detect:latest
       - docker tag depth-anything-flask-app:latest 491085381993.dkr.ecr.us-east-1.amazonaws.com/objectdetection/depth:latest
       - docker tag object-detection-react-app:latest 491085381993.dkr.ecr.us-east-1.amazonaws.com/objectdetection/frontend:latest

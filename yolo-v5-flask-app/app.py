@@ -197,7 +197,7 @@ def encode_image_to_base64(img_array):
     except Exception as e:
         raise Exception(f"Error encoding image: {e}")
 
-@app.route('/detect', methods=['POST'])
+@app.route('/yolo/detect', methods=['POST'])
 def detect_objects():
     """Main endpoint for object detection"""
     try:
