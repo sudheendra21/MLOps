@@ -12,6 +12,9 @@ phases:
       - pip install -r yolo-v5-flask-app/requirements.txt
       - pip install -r depth-anything-flask-app/requirements.txt
       - cd object-detection-react-app && npm ci && cd ..
+      # Enable Docker Buildx for cross-platform builds
+      - docker buildx create --use
+      - docker buildx inspect --bootstrap
 
   pre_build:
     commands:
@@ -22,8 +25,10 @@ phases:
 
   build:
     commands:
-      - echo Building Docker images...
-      - docker compose build --platform linux/amd64
+      - echo Building Docker images for linux/amd64...
+      - docker buildx build --platform linux/amd64 -t yolo-v5-flask-app:latest ./yolo-v5-flask-app --load
+      - docker buildx build --platform linux/amd64 -t depth-anything-flask-app:latest ./depth-anything-flask-app --load
+      - docker buildx build --platform linux/amd64 -t object-detection-react-app:latest ./object-detection-react-app --load
       - docker tag yolo-v5-flask-app:latest 491085381993.dkr.ecr.us-east-1.amazonaws.com/objectdetection/detect:latest
       - docker tag depth-anything-flask-app:latest 491085381993.dkr.ecr.us-east-1.amazonaws.com/objectdetection/depth:latest
       - docker tag object-detection-react-app:latest 491085381993.dkr.ecr.us-east-1.amazonaws.com/objectdetection/frontend:latest
