@@ -18,6 +18,8 @@ phases:
 
   pre_build:
     commands:
+      - echo Logging in to Docker Hub...
+      - echo "$DOCKERHUB_PASSWORD" | docker login --username "$DOCKERHUB_USERNAME" --password-stdin
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 491085381993.dkr.ecr.us-east-1.amazonaws.com
       - export WEBAPP_API_SERVICE_URL=http://Mlops-alb-2120823531.us-east-1.elb.amazonaws.com
